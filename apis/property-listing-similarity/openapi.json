@@ -1,0 +1,64 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Listing Similarity",
+    "description": "Matches a property listing to comparable ones on structured features to help assess asking price.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://example.invalid"
+    }
+  ],
+  "paths": {
+    "/listings/{id}/similar": {
+      "post": {
+        "summary": "Find similar listings",
+        "description": "Returns other listings matching on structured property features with a similarity score.",
+        "tags": [
+          "property"
+        ],
+        "operationId": "property-listing-similarity-post-listings-id-similar",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Listing identifier.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Similar listings found.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "similar": [
+                    {
+                      "id": "L8821",
+                      "score": 0.91
+                    }
+                  ],
+                  "basis": [
+                    "type",
+                    "sqm",
+                    "area"
+                  ]
+                },
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Listing not found."
+          }
+        }
+      }
+    }
+  }
+}

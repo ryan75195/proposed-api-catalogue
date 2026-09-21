@@ -1,0 +1,70 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Skill Gap Map",
+    "description": "Compares a skill profile to a role's expected skills and returns the gaps to close.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://example.invalid"
+    }
+  ],
+  "paths": {
+    "/gap": {
+      "post": {
+        "summary": "Map skill gaps to a role",
+        "description": "Compares a skill profile to a target role's expected skills and returns the gaps.",
+        "tags": [
+          "education/workforce"
+        ],
+        "operationId": "skill-gap-map-post-gap",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Gaps mapped.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "gaps": [
+                    "python",
+                    "dashboards"
+                  ],
+                  "match": 0.6
+                },
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "No profile supplied."
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "profile",
+                  "role"
+                ],
+                "properties": {
+                  "profile": {
+                    "type": "array"
+                  },
+                  "role": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Company Solvency Snapshot",
+    "description": "Returns a compact solvency snapshot for a company from its latest filed accounts.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://example.invalid"
+    }
+  ],
+  "paths": {
+    "/companies/{regNo}/solvency": {
+      "get": {
+        "summary": "Company solvency snapshot",
+        "description": "Returns a compact solvency view derived from a company's latest filed accounts.",
+        "tags": [
+          "business records"
+        ],
+        "operationId": "company-solvency-snapshot-get-companies-regno-solvency",
+        "parameters": [
+          {
+            "name": "regNo",
+            "in": "path",
+            "required": true,
+            "description": "Company registration number.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Snapshot returned.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "netAssets": 120000,
+                  "currentRatio": 1.6,
+                  "status": "solvent"
+                },
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Company or accounts not found."
+          }
+        }
+      }
+    }
+  }
+}

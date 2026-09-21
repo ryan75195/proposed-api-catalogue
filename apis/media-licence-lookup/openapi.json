@@ -1,0 +1,56 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Media Licence Lookup",
+    "description": "Returns the recorded licence terms for a media asset to support safe reuse decisions.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://example.invalid"
+    }
+  ],
+  "paths": {
+    "/assets/{id}/licence": {
+      "get": {
+        "summary": "Look up asset licence terms",
+        "description": "Returns the recorded licence terms for a media asset.",
+        "tags": [
+          "media/documents"
+        ],
+        "operationId": "media-licence-lookup-get-assets-id-licence",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Media asset identifier.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Licence returned.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "type": "royalty-free",
+                  "allowCommercial": true,
+                  "attributionRequired": true
+                },
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Asset not found."
+          }
+        }
+      }
+    }
+  }
+}

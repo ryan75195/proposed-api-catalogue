@@ -1,0 +1,67 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Crop Sowing Calendar",
+    "description": "Recommends a crop sowing window and frost risk from historical climate norms for a location.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://example.invalid"
+    }
+  ],
+  "paths": {
+    "/calendar": {
+      "get": {
+        "summary": "Recommended sowing window",
+        "description": "Returns a sowing window and frost risk for a crop in a location from climate norms.",
+        "tags": [
+          "food/agriculture"
+        ],
+        "operationId": "crop-sowing-calendar-get-calendar",
+        "parameters": [
+          {
+            "name": "crop",
+            "in": "query",
+            "required": true,
+            "description": "Crop name.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "postcode",
+            "in": "query",
+            "required": true,
+            "description": "Location postcode.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Window returned.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "window": {
+                    "from": "2026-03-20",
+                    "to": "2026-05-15"
+                  },
+                  "frostRisk": "low"
+                },
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Crop or location not covered."
+          }
+        }
+      }
+    }
+  }
+}

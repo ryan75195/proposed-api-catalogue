@@ -1,0 +1,62 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Food Traceability Map",
+    "description": "Returns the recorded supply-chain path of a food batch to speed up recall tracing.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://example.invalid"
+    }
+  ],
+  "paths": {
+    "/batches/{id}/path": {
+      "get": {
+        "summary": "Trace a batch path",
+        "description": "Returns the recorded upstream and downstream path of a food batch.",
+        "tags": [
+          "food/agriculture"
+        ],
+        "operationId": "food-traceability-get-batches-id-path",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Batch identifier.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Path returned.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "upstream": [
+                    {
+                      "supplier": "Farm Co",
+                      "batch": "F-221"
+                    }
+                  ],
+                  "downstream": [
+                    "Warehouse 4"
+                  ]
+                },
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Batch unknown."
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Step-Free Route",
+    "description": "Plans a route that avoids steps and reports accessibility features per leg from supplied data.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://example.invalid"
+    }
+  ],
+  "paths": {
+    "/routes/step-free": {
+      "get": {
+        "summary": "Plan a step-free route",
+        "description": "Returns a route that avoids steps with accessibility features reported per leg.",
+        "tags": [
+          "travel/accessibility"
+        ],
+        "operationId": "step-free-route-get-routes-step-free",
+        "parameters": [
+          {
+            "name": "from",
+            "in": "query",
+            "required": true,
+            "description": "Origin identifier.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "required": true,
+            "description": "Destination identifier.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Route planned.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "stepsAvoided": 3,
+                  "legs": [
+                    {
+                      "mode": "bus",
+                      "levelAccess": true
+                    }
+                  ],
+                  "notes": [
+                    "lobby lift out of order"
+                  ]
+                },
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No accessible route found."
+          }
+        }
+      }
+    }
+  }
+}

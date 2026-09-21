@@ -1,0 +1,69 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Price Comparison Feed",
+    "description": "Ranks merchant offers for a product by total landed cost to simplify comparison shopping.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://example.invalid"
+    }
+  ],
+  "paths": {
+    "/offers": {
+      "get": {
+        "summary": "Rank merchant offers",
+        "description": "Returns merchant offers for a GTIN ranked by total landed cost.",
+        "tags": [
+          "ecommerce"
+        ],
+        "operationId": "price-comparison-get-offers",
+        "parameters": [
+          {
+            "name": "gtin",
+            "in": "query",
+            "required": true,
+            "description": "Global trade item number.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "postcode",
+            "in": "query",
+            "required": false,
+            "description": "Destination for delivery cost context.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Offers ranked.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "offers": [
+                    {
+                      "merchant": "acme",
+                      "total": 29.99,
+                      "deliveryDays": 3
+                    }
+                  ]
+                },
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No offers for GTIN."
+          }
+        }
+      }
+    }
+  }
+}

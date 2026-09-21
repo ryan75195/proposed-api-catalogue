@@ -1,0 +1,56 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Demand Response Readiness",
+    "description": "Estimates a home's shiftable load and availability window for demand response participation.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://example.invalid"
+    }
+  ],
+  "paths": {
+    "/readiness/{accountId}": {
+      "get": {
+        "summary": "Assess demand response readiness",
+        "description": "Returns an indicative shiftable load and availability window for a home.",
+        "tags": [
+          "climate/energy"
+        ],
+        "operationId": "demand-response-get-readiness-accountid",
+        "parameters": [
+          {
+            "name": "accountId",
+            "in": "path",
+            "required": true,
+            "description": "Home account identifier.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Readiness assessed.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "shiftableKw": 1.5,
+                  "windowStart": "2026-09-22T17:00:00Z",
+                  "windowEnd": "2026-09-22T20:00:00Z"
+                },
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Account unknown."
+          }
+        }
+      }
+    }
+  }
+}

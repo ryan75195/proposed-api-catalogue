@@ -1,0 +1,72 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Document Format Converter",
+    "description": "Converts a supplied document between formats while preserving structure and flagging lossy cases.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://example.invalid"
+    }
+  ],
+  "paths": {
+    "/convert": {
+      "post": {
+        "summary": "Convert a document format",
+        "description": "Converts a supplied document between formats, reporting whether the conversion was lossy.",
+        "tags": [
+          "media/documents"
+        ],
+        "operationId": "document-converter-post-convert",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Converted.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "converted",
+                  "outputRef": "out-7",
+                  "lossy": false
+                },
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Conversion not supported."
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "fileRef",
+                  "from",
+                  "to"
+                ],
+                "properties": {
+                  "fileRef": {
+                    "type": "string"
+                  },
+                  "from": {
+                    "type": "string"
+                  },
+                  "to": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

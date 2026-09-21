@@ -1,0 +1,59 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Local Area Index",
+    "description": "Returns a compact neighbourhood profile with normalised scores for transport, noise and amenities.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://example.invalid"
+    }
+  ],
+  "paths": {
+    "/areas": {
+      "get": {
+        "summary": "Profile a local area",
+        "description": "Returns an area profile with normalised facet scores based on supplied location data.",
+        "tags": [
+          "property"
+        ],
+        "operationId": "local-area-index-get-areas",
+        "parameters": [
+          {
+            "name": "postcode",
+            "in": "query",
+            "required": true,
+            "description": "Area postcode.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Area profiled.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "score": 0.72,
+                  "facets": {
+                    "transport": 0.8,
+                    "noise": 0.5
+                  },
+                  "amenities": 34
+                },
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No data for area."
+          }
+        }
+      }
+    }
+  }
+}

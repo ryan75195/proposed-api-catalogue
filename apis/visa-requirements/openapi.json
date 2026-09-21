@@ -1,0 +1,65 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Visa Requirements Lookup",
+    "description": "Returns the visa requirement for a nationality to a destination from published rules.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://example.invalid"
+    }
+  ],
+  "paths": {
+    "/requirements": {
+      "get": {
+        "summary": "Look up a visa requirement",
+        "description": "Returns the visa requirement for a nationality to a destination with a source date.",
+        "tags": [
+          "travel/accessibility"
+        ],
+        "operationId": "visa-requirements-get-requirements",
+        "parameters": [
+          {
+            "name": "nationality",
+            "in": "query",
+            "required": true,
+            "description": "Nationality ISO code.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "destination",
+            "in": "query",
+            "required": true,
+            "description": "Destination ISO code.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Requirement returned.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "requirement": "visa-on-arrival",
+                  "durationDays": 30,
+                  "sourceDate": "2026-07-01"
+                },
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No rule found for pair."
+          }
+        }
+      }
+    }
+  }
+}

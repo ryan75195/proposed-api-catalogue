@@ -1,0 +1,74 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Lease Renewal Calculator",
+    "description": "Computes the arithmetic of a lease extension, such as years remaining and a proposed new term.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://example.invalid"
+    }
+  ],
+  "paths": {
+    "/lease/renewal": {
+      "get": {
+        "summary": "Compute lease renewal maths",
+        "description": "Computes years remaining on a lease and the resulting term of a fixed extension.",
+        "tags": [
+          "property"
+        ],
+        "operationId": "lease-renewal-calc-get-lease-renewal",
+        "parameters": [
+          {
+            "name": "start",
+            "in": "query",
+            "required": true,
+            "description": "Lease start date (YYYY-MM-DD).",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "termYears",
+            "in": "query",
+            "required": true,
+            "description": "Original term in years.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "extendTo",
+            "in": "query",
+            "required": false,
+            "description": "Proposed new term in years.",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Renewal maths computed.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "yearsRemaining": 68,
+                  "extendTo": 199,
+                  "notation": "as at today"
+                },
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Lease appears to have expired."
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,352 @@
+[
+  {
+    "slug": "deploy-gate",
+    "category": "developer operations",
+    "title": "Deploy Gate",
+    "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/deploy-gate/",
+    "openapi": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/deploy-gate/openapi.json"
+  },
+  {
+    "slug": "incident-brief",
+    "category": "developer operations",
+    "title": "Incident Brief",
+    "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/incident-brief/",
+    "openapi": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/incident-brief/openapi.json"
+  },
+  {
+    "slug": "pipeline-cache",
+    "category": "developer operations",
+    "title": "Pipeline Cache",
+    "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/pipeline-cache/",
+    "openapi": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/pipeline-cache/openapi.json"
+  },
+  {
+    "slug": "secrets-rotation",
+    "category": "developer operations",
+    "title": "Secrets Rotation Planner",
+    "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/secrets-rotation/",
+    "openapi": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/secrets-rotation/openapi.json"
+  },
+  {
+    "slug": "feature-flag-audit",
+    "category": "developer operations",
+    "title": "Feature Flag Audit",
+    "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/feature-flag-audit/",
+    "openapi": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/feature-flag-audit/openapi.json"
+  },
+  {
+    "slug": "cart-session-recovery",
+    "category": "ecommerce",
+    "title": "Cart Session Recovery",
+    "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/cart-session-recovery/",
+    "openapi": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/cart-session-recovery/openapi.json"
+  },
+  {
+    "slug": "inventory-lookup",
+    "category": "ecommerce",
+    "title": "Inventory Lookup",
+    "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/inventory-lookup/",
+    "openapi": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/inventory-lookup/openapi.json"
+  },
+  {
+    "slug": "price-comparison",
+    "category": "ecommerce",
+    "title": "Price Comparison Feed",
+    "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/price-comparison/",
+    "openapi": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/price-comparison/openapi.json"
+  },
+  {
+    "slug": "subscription-pause",
+    "category": "ecommerce",
+    "title": "Subscription Pause & Resume",
+    "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/subscription-pause/",
+    "openapi": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/subscription-pause/openapi.json"
+  },
+  {
+    "slug": "loyalty-burn",
+    "category": "ecommerce",
+    "title": "Loyalty Burn Rates",
+    "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/loyalty-burn/",
+    "openapi": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/loyalty-burn/openapi.json"
+  },
+  {
+    "slug": "route-planner",
+    "category": "logistics",
+    "title": "Multi-Stop Route Planner",
+    "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/route-planner/",
+    "openapi": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/route-planner/openapi.json"
+  },
+  {
+    "slug": "load-builder",
+    "category": "logistics",
+    "title": "Load Builder",
+    "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/load-builder/",
+    "openapi": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/load-builder/openapi.json"
+  },
+  {
+    "slug": "parcel-tracking",
+    "category": "logistics",
+    "title": "Parcel Tracking Timeline",
+    "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/parcel-tracking/",
+    "openapi": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/parcel-tracking/openapi.json"
+  },
+  {
+    "slug": "warehouse-slot",
+    "category": "logistics",
+    "title": "Warehouse Slot Booking",
+    "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/warehouse-slot/",
+    "openapi": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/warehouse-slot/openapi.json"
+  },
+  {
+    "slug": "delivery-rebate",
+    "category": "logistics",
+    "title": "Delivery Rebate Ledger",
+    "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/delivery-rebate/",
+    "openapi": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/delivery-rebate/openapi.json"
+  },
+  {
+    "slug": "rental-valuation",
+    "category": "property",
+    "title": "Rental Valuation Estimate",
+    "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/rental-valuation/",
+    "openapi": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/rental-valuation/openapi.json"
+  },
+  {
+    "slug": "hmo-checklist",
+    "category": "property",
+    "title": "HMO Compliance Checklist",
+    "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/hmo-checklist/",
+    "openapi": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/hmo-checklist/openapi.json"
+  },
+  {
+    "slug": "property-listing-similarity",
+    "category": "property",
+    "title": "Listing Similarity",
+    "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/property-listing-similarity/",
+    "openapi": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/property-listing-similarity/openapi.json"
+  },
+  {
+    "slug": "lease-renewal-calc",
+    "category": "property",
+    "title": "Lease Renewal Calculator",
+    "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/lease-renewal-calc/",
+    "openapi": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/lease-renewal-calc/openapi.json"
+  },
+  {
+    "slug": "local-area-index",
+    "category": "property",
+    "title": "Local Area Index",
+    "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/local-area-index/",
+    "openapi": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/local-area-index/openapi.json"
+  },
+  {
+    "slug": "farm-gate-prices",
+    "category": "food/agriculture",
+    "title": "Farm Gate Prices",
+    "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/farm-gate-prices/",
+    "openapi": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/farm-gate-prices/openapi.json"
+  },
+  {
+    "slug": "crop-sowing-calendar",
+    "category": "food/agriculture",
+    "title": "Crop Sowing Calendar",
+    "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/crop-sowing-calendar/",
+    "openapi": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/crop-sowing-calendar/openapi.json"
+  },
+  {
+    "slug": "food-traceability",
+    "category": "food/agriculture",
+    "title": "Food Traceability Map",
+    "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/food-traceability/",
+    "openapi": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/food-traceability/openapi.json"
+  },
+  {
+    "slug": "field-moisture",
+    "category": "food/agriculture",
+    "title": "Field Moisture Readings",
+    "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/field-moisture/",
+    "openapi": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/field-moisture/openapi.json"
+  },
+  {
+    "slug": "menu-nutrition",
+    "category": "food/agriculture",
+    "title": "Menu Nutrition Annotation",
+    "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/menu-nutrition/",
+    "openapi": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/menu-nutrition/openapi.json"
+  },
+  {
+    "slug": "solar-yield",
+    "category": "climate/energy",
+    "title": "Solar Yield Estimate",
+    "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/solar-yield/",
+    "openapi": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/solar-yield/openapi.json"
+  },
+  {
+    "slug": "carbon-embodied",
+    "category": "climate/energy",
+    "title": "Embodied Carbon Lookup",
+    "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/carbon-embodied/",
+    "openapi": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/carbon-embodied/openapi.json"
+  },
+  {
+    "slug": "flood-exposure",
+    "category": "climate/energy",
+    "title": "Flood Exposure Score",
+    "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/flood-exposure/",
+    "openapi": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/flood-exposure/openapi.json"
+  },
+  {
+    "slug": "demand-response",
+    "category": "climate/energy",
+    "title": "Demand Response Readiness",
+    "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/demand-response/",
+    "openapi": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/demand-response/openapi.json"
+  },
+  {
+    "slug": "weather-climate-trend",
+    "category": "climate/energy",
+    "title": "Local Climate Trend",
+    "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/weather-climate-trend/",
+    "openapi": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/weather-climate-trend/openapi.json"
+  },
+  {
+    "slug": "company-solvency-snapshot",
+    "category": "business records",
+    "title": "Company Solvency Snapshot",
+    "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/company-solvency-snapshot/",
+    "openapi": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/company-solvency-snapshot/openapi.json"
+  },
+  {
+    "slug": "director-crosscheck",
+    "category": "business records",
+    "title": "Director Crosscheck",
+    "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/director-crosscheck/",
+    "openapi": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/director-crosscheck/openapi.json"
+  },
+  {
+    "slug": "filing-reminder",
+    "category": "business records",
+    "title": "Filing Deadline Reminder",
+    "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/filing-reminder/",
+    "openapi": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/filing-reminder/openapi.json"
+  },
+  {
+    "slug": "trade-description-check",
+    "category": "business records",
+    "title": "Trade Description Check",
+    "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/trade-description-check/",
+    "openapi": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/trade-description-check/openapi.json"
+  },
+  {
+    "slug": "supplier-registry",
+    "category": "business records",
+    "title": "Supplier Registry Lookup",
+    "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/supplier-registry/",
+    "openapi": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/supplier-registry/openapi.json"
+  },
+  {
+    "slug": "step-free-route",
+    "category": "travel/accessibility",
+    "title": "Step-Free Route",
+    "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/step-free-route/",
+    "openapi": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/step-free-route/openapi.json"
+  },
+  {
+    "slug": "quiet-hour-locator",
+    "category": "travel/accessibility",
+    "title": "Quiet Hour Locator",
+    "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/quiet-hour-locator/",
+    "openapi": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/quiet-hour-locator/openapi.json"
+  },
+  {
+    "slug": "accessible-transport-board",
+    "category": "travel/accessibility",
+    "title": "Accessible Transport Boarding",
+    "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/accessible-transport-board/",
+    "openapi": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/accessible-transport-board/openapi.json"
+  },
+  {
+    "slug": "visa-requirements",
+    "category": "travel/accessibility",
+    "title": "Visa Requirements Lookup",
+    "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/visa-requirements/",
+    "openapi": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/visa-requirements/openapi.json"
+  },
+  {
+    "slug": "trip-consolidator",
+    "category": "travel/accessibility",
+    "title": "Trip Consolidator",
+    "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/trip-consolidator/",
+    "openapi": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/trip-consolidator/openapi.json"
+  },
+  {
+    "slug": "caption-transcribe",
+    "category": "media/documents",
+    "title": "Caption & Transcribe",
+    "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/caption-transcribe/",
+    "openapi": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/caption-transcribe/openapi.json"
+  },
+  {
+    "slug": "form-fill-extract",
+    "category": "media/documents",
+    "title": "Form Data Extraction",
+    "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/form-fill-extract/",
+    "openapi": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/form-fill-extract/openapi.json"
+  },
+  {
+    "slug": "draft-rewrite",
+    "category": "media/documents",
+    "title": "Draft Rewrite",
+    "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/draft-rewrite/",
+    "openapi": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/draft-rewrite/openapi.json"
+  },
+  {
+    "slug": "document-converter",
+    "category": "media/documents",
+    "title": "Document Format Converter",
+    "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/document-converter/",
+    "openapi": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/document-converter/openapi.json"
+  },
+  {
+    "slug": "media-licence-lookup",
+    "category": "media/documents",
+    "title": "Media Licence Lookup",
+    "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/media-licence-lookup/",
+    "openapi": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/media-licence-lookup/openapi.json"
+  },
+  {
+    "slug": "skill-gap-map",
+    "category": "education/workforce",
+    "title": "Skill Gap Map",
+    "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/skill-gap-map/",
+    "openapi": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/skill-gap-map/openapi.json"
+  },
+  {
+    "slug": "course-search",
+    "category": "education/workforce",
+    "title": "Course Search",
+    "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/course-search/",
+    "openapi": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/course-search/openapi.json"
+  },
+  {
+    "slug": "roster-balance",
+    "category": "education/workforce",
+    "title": "Roster Balance",
+    "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/roster-balance/",
+    "openapi": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/roster-balance/openapi.json"
+  },
+  {
+    "slug": "learning-path",
+    "category": "education/workforce",
+    "title": "Learning Path Builder",
+    "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/learning-path/",
+    "openapi": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/learning-path/openapi.json"
+  },
+  {
+    "slug": "apprenticeship-suitability",
+    "category": "education/workforce",
+    "title": "Apprenticeship Suitability",
+    "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/apprenticeship-suitability/",
+    "openapi": "https://nice-dune-02fdd5103.3.azurestaticapps.net/apis/apprenticeship-suitability/openapi.json"
+  }
+]

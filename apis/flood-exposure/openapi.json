@@ -1,0 +1,68 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Flood Exposure Score",
+    "description": "Returns a coarse flood exposure score and contributing sources for an address from map data.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://example.invalid"
+    }
+  ],
+  "paths": {
+    "/exposure": {
+      "get": {
+        "summary": "Flood exposure for an address",
+        "description": "Returns a coarse flood exposure score and contributing sources for an address.",
+        "tags": [
+          "climate/energy"
+        ],
+        "operationId": "flood-exposure-get-exposure",
+        "parameters": [
+          {
+            "name": "postcode",
+            "in": "query",
+            "required": true,
+            "description": "Address postcode.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "required": false,
+            "description": "Address line to refine the plot.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Exposure scored.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "score": 3,
+                  "band": "moderate",
+                  "sources": [
+                    "rivers",
+                    "surface"
+                  ]
+                },
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Address not resolved."
+          }
+        }
+      }
+    }
+  }
+}

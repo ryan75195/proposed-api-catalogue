@@ -1,0 +1,77 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Subscription Pause & Resume",
+    "description": "Lets subscribers schedule a pause window on a recurring order instead of cancelling outright.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://example.invalid"
+    }
+  ],
+  "paths": {
+    "/subscriptions/{id}/pause": {
+      "post": {
+        "summary": "Pause a subscription window",
+        "description": "Sets a pause window and returns the resulting status and next charge date.",
+        "tags": [
+          "ecommerce"
+        ],
+        "operationId": "subscription-pause-post-subscriptions-id-pause",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Subscription identifier.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Pause scheduled.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "paused",
+                  "nextChargeDate": "2026-11-01"
+                },
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Subscription not found."
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "from",
+                  "until"
+                ],
+                "properties": {
+                  "from": {
+                    "type": "string"
+                  },
+                  "until": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

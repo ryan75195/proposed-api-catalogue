@@ -1,0 +1,105 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Pipeline Cache",
+    "description": "Content-addressed cache key ledger that keeps CI cache hits consistent across jobs and platforms.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://example.invalid"
+    }
+  ],
+  "paths": {
+    "/keys": {
+      "post": {
+        "summary": "Derive a stable cache key",
+        "description": "Computes a content-addressed key from a manifest hash so cache hits are consistent across jobs.",
+        "tags": [
+          "developer operations"
+        ],
+        "operationId": "pipeline-cache-post-keys",
+        "parameters": [
+          {
+            "name": "manifestHash",
+            "in": "query",
+            "required": true,
+            "description": "Hash of the dependency manifest.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "platform",
+            "in": "query",
+            "required": false,
+            "description": "Platform identifier to scope the key.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Key derived.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "key": "sha-9f2c",
+                  "platform": "linux-x64"
+                },
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Missing manifest hash."
+          }
+        }
+      }
+    },
+    "/entries/{key}": {
+      "get": {
+        "summary": "Report cache hit status",
+        "description": "Reports whether a cached artifact exists for a key and its size.",
+        "tags": [
+          "developer operations"
+        ],
+        "operationId": "pipeline-cache-get-entries-key",
+        "parameters": [
+          {
+            "name": "key",
+            "in": "path",
+            "required": true,
+            "description": "Cache key.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Status reported.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "key": "sha-9f2c",
+                  "status": "hit",
+                  "sizeBytes": 1048576
+                },
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Key not found."
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Farm Gate Prices",
+    "description": "Supplies indicative recent farm gate price aggregates by commodity and region.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://example.invalid"
+    }
+  ],
+  "paths": {
+    "/prices": {
+      "get": {
+        "summary": "Recent farm gate prices",
+        "description": "Returns indicative recent price aggregates for a commodity in a region.",
+        "tags": [
+          "food/agriculture"
+        ],
+        "operationId": "farm-gate-prices-get-prices",
+        "parameters": [
+          {
+            "name": "commodity",
+            "in": "query",
+            "required": true,
+            "description": "Commodity name.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "region",
+            "in": "query",
+            "required": false,
+            "description": "Region filter.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Prices returned.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "pencePerKg": 24.5,
+                  "trend": "up",
+                  "samples": 42
+                },
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No price data for commodity."
+          }
+        }
+      }
+    }
+  }
+}

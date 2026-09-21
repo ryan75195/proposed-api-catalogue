@@ -1,0 +1,75 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Rental Valuation Estimate",
+    "description": "Estimates a monthly rent range for a property from its features and nearby comparables.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://example.invalid"
+    }
+  ],
+  "paths": {
+    "/valuations": {
+      "get": {
+        "summary": "Estimate a rental range",
+        "description": "Returns a lower, mid and upper monthly rent estimate for a property from its features.",
+        "tags": [
+          "property"
+        ],
+        "operationId": "rental-valuation-get-valuations",
+        "parameters": [
+          {
+            "name": "postcode",
+            "in": "query",
+            "required": true,
+            "description": "Property postcode.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "beds",
+            "in": "query",
+            "required": true,
+            "description": "Number of bedrooms.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "sqm",
+            "in": "query",
+            "required": false,
+            "description": "Internal floor area.",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Estimate produced.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "lower": 950,
+                  "mid": 1050,
+                  "upper": 1150,
+                  "comparables": 18
+                },
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No comparables for area."
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Cart Session Recovery",
+    "description": "Restores a shopper's abandoned cart with item lists and price deltas for a return visit.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://example.invalid"
+    }
+  ],
+  "paths": {
+    "/carts/{token}/restore": {
+      "get": {
+        "summary": "Restore an abandoned cart",
+        "description": "Returns saved cart items with any price changes since the session was saved.",
+        "tags": [
+          "ecommerce"
+        ],
+        "operationId": "cart-session-recovery-get-carts-token-restore",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "path",
+            "required": true,
+            "description": "Anonymous cart token.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Cart restored.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "items": [
+                    {
+                      "sku": "SW-12",
+                      "qty": 2
+                    }
+                  ],
+                  "priceDeltas": [
+                    {
+                      "sku": "SW-12",
+                      "old": 20.0,
+                      "new": 22.5
+                    }
+                  ]
+                },
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No cart for token."
+          }
+        }
+      }
+    }
+  }
+}

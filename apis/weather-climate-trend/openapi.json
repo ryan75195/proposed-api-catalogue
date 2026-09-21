@@ -1,0 +1,74 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Local Climate Trend",
+    "description": "Returns a smoothed trend for a climate metric at a location from observed station data.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://example.invalid"
+    }
+  ],
+  "paths": {
+    "/trend": {
+      "get": {
+        "summary": "Local climate trend",
+        "description": "Returns a smoothed trend for a climate metric at a location from station observations.",
+        "tags": [
+          "climate/energy"
+        ],
+        "operationId": "weather-climate-trend-get-trend",
+        "parameters": [
+          {
+            "name": "postcode",
+            "in": "query",
+            "required": true,
+            "description": "Location postcode.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "metric",
+            "in": "query",
+            "required": true,
+            "description": "Metric, e.g. tmax, rain.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "since",
+            "in": "query",
+            "required": false,
+            "description": "Start year.",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Trend returned.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "deltaC": 0.6,
+                  "direction": "warming",
+                  "years": 24
+                },
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No station data for location."
+          }
+        }
+      }
+    }
+  }
+}

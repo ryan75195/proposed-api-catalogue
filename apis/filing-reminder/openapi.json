@@ -1,0 +1,58 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Filing Deadline Reminder",
+    "description": "Returns upcoming statutory filing deadlines for a company to help avoid late submissions.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://example.invalid"
+    }
+  ],
+  "paths": {
+    "/companies/{regNo}/deadlines": {
+      "get": {
+        "summary": "Upcoming filing deadlines",
+        "description": "Returns the next and overdue statutory filing deadlines for a company.",
+        "tags": [
+          "business records"
+        ],
+        "operationId": "filing-reminder-get-companies-regno-deadlines",
+        "parameters": [
+          {
+            "name": "regNo",
+            "in": "path",
+            "required": true,
+            "description": "Company registration number.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deadlines returned.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "next": {
+                    "type": "accounts",
+                    "due": "2026-11-30"
+                  },
+                  "late": []
+                },
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Company not found."
+          }
+        }
+      }
+    }
+  }
+}

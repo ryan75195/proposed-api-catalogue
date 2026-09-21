@@ -1,0 +1,61 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Parcel Tracking Timeline",
+    "description": "Exposes the full scan history of a parcel with timestamps and locations for support and customers.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://example.invalid"
+    }
+  ],
+  "paths": {
+    "/parcels/{tracking}/timeline": {
+      "get": {
+        "summary": "List parcel scan history",
+        "description": "Returns the chronological scan events for a tracking number.",
+        "tags": [
+          "logistics"
+        ],
+        "operationId": "parcel-tracking-get-parcels-tracking-timeline",
+        "parameters": [
+          {
+            "name": "tracking",
+            "in": "path",
+            "required": true,
+            "description": "Carrier tracking number.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Timeline returned.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "events": [
+                    {
+                      "at": "2026-09-20T08:00:00Z",
+                      "event": "depot-scan",
+                      "location": "BH11"
+                    }
+                  ],
+                  "current": "in-transit"
+                },
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Tracking number unknown."
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Roster Balance",
+    "description": "Assesses fairness metrics across a submitted staff roster and flags unbalanced schedules.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://example.invalid"
+    }
+  ],
+  "paths": {
+    "/roster/balance": {
+      "post": {
+        "summary": "Assess roster fairness",
+        "description": "Returns fairness metrics across a submitted roster and flags unbalanced staff.",
+        "tags": [
+          "education/workforce"
+        ],
+        "operationId": "roster-balance-post-roster-balance",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Balance assessed.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "weekendsPerPerson": {
+                    "max": 3,
+                    "min": 0
+                  },
+                  "flagged": [
+                    "P-12"
+                  ]
+                },
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "No shifts supplied."
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "shifts"
+                ],
+                "properties": {
+                  "shifts": {
+                    "type": "array",
+                    "items": {
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

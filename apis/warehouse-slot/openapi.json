@@ -1,0 +1,68 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Warehouse Slot Booking",
+    "description": "Books inbound and outbound warehouse bay slots to reduce dock congestion and waiting.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://example.invalid"
+    }
+  ],
+  "paths": {
+    "/slots": {
+      "post": {
+        "summary": "Book a warehouse slot",
+        "description": "Books a bay arrival window and returns a confirmation with a bay assignment.",
+        "tags": [
+          "logistics"
+        ],
+        "operationId": "warehouse-slot-post-slots",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Slot booked.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "slotId": "s-881",
+                  "status": "confirmed",
+                  "bay": "B3"
+                },
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Slot unavailable."
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "warehouse",
+                  "window"
+                ],
+                "properties": {
+                  "warehouse": {
+                    "type": "string"
+                  },
+                  "window": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

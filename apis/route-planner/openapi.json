@@ -1,0 +1,71 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Multi-Stop Route Planner",
+    "description": "Sequences multi-stop delivery routes to minimise drive time subject to time windows.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://example.invalid"
+    }
+  ],
+  "paths": {
+    "/routes/plan": {
+      "post": {
+        "summary": "Sequence a set of stops",
+        "description": "Returns an ordered stop sequence and estimated time and distance for the route.",
+        "tags": [
+          "logistics"
+        ],
+        "operationId": "route-planner-post-routes-plan",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Route planned.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "order": [
+                    0,
+                    3,
+                    1
+                  ],
+                  "etaMinutes": 85,
+                  "totalKm": 62
+                },
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Fewer than two stops provided."
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "stops"
+                ],
+                "properties": {
+                  "stops": {
+                    "type": "array",
+                    "items": {
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

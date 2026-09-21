@@ -1,0 +1,60 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Accessible Transport Boarding",
+    "description": "Reports boarding accessibility of next departures at a stop from operator-supplied data.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://example.invalid"
+    }
+  ],
+  "paths": {
+    "/stops/{id}/boarding": {
+      "get": {
+        "summary": "Next departures boarding access",
+        "description": "Returns the next departures at a stop with reported boarding accessibility features.",
+        "tags": [
+          "travel/accessibility"
+        ],
+        "operationId": "accessible-transport-board-get-stops-id-boarding",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Stop identifier.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Departures returned.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "next": [
+                    {
+                      "line": "9",
+                      "departs": "14:05",
+                      "boarding": "low-floor"
+                    }
+                  ]
+                },
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Stop not found."
+          }
+        }
+      }
+    }
+  }
+}

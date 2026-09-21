@@ -1,0 +1,70 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Loyalty Burn Rates",
+    "description": "Reports how loyalty points are redeemed and the per-point value of each redemption type.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://example.invalid"
+    }
+  ],
+  "paths": {
+    "/programs/{id}/burn": {
+      "get": {
+        "summary": "Report points redemption",
+        "description": "Returns redemption volume and value per redemption category over a window.",
+        "tags": [
+          "ecommerce"
+        ],
+        "operationId": "loyalty-burn-get-programs-id-burn",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Loyalty program identifier.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "from",
+            "in": "query",
+            "required": false,
+            "description": "Start date (YYYY-MM-DD).",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Burn rates reported.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "categories": [
+                    {
+                      "name": "voucher",
+                      "points": 120000,
+                      "perPointValue": 0.01
+                    }
+                  ],
+                  "total": 400000
+                },
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Program not found."
+          }
+        }
+      }
+    }
+  }
+}

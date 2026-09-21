@@ -1,0 +1,57 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Supplier Registry Lookup",
+    "description": "Resolves a supplier to its registry record and verified identifiers for onboarding checks.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://example.invalid"
+    }
+  ],
+  "paths": {
+    "/suppliers/{id}": {
+      "get": {
+        "summary": "Resolve a supplier record",
+        "description": "Returns a supplier's registry record and verified identifiers.",
+        "tags": [
+          "business records"
+        ],
+        "operationId": "supplier-registry-get-suppliers-id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Supplier identifier.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Record returned.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "regNo": "1234",
+                  "vatNo": "GB...",
+                  "status": "verified",
+                  "foundedYear": 2010
+                },
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Supplier not found."
+          }
+        }
+      }
+    }
+  }
+}

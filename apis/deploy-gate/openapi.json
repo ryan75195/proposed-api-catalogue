@@ -1,0 +1,68 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Deploy Gate",
+    "description": "Recommendation API for staging and blocking software deployments based on configurable rollout policies.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://example.invalid"
+    }
+  ],
+  "paths": {
+    "/releases/{releaseId}/decide": {
+      "post": {
+        "summary": "Decide whether a release may proceed",
+        "description": "Evaluates configured rollout policies against a pending release and returns a recommendation.",
+        "tags": [
+          "developer operations"
+        ],
+        "operationId": "deploy-gate-post-releases-releaseid-decide",
+        "parameters": [
+          {
+            "name": "releaseId",
+            "in": "path",
+            "required": true,
+            "description": "Identifier of the release under review.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "canaryHealthRatio",
+            "in": "query",
+            "required": false,
+            "description": "Ratio of healthy canary instances (0..1).",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Decision produced.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "decision": "block",
+                  "reasons": [
+                    "on-call rotated",
+                    "error-rate above 2%"
+                  ],
+                  "releaseId": "rel-1042"
+                },
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Release not found."
+          }
+        }
+      }
+    }
+  }
+}

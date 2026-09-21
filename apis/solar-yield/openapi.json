@@ -1,0 +1,74 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Solar Yield Estimate",
+    "description": "Estimates indicative annual solar generation for an array from location and specifications.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://example.invalid"
+    }
+  ],
+  "paths": {
+    "/solar/yield": {
+      "get": {
+        "summary": "Estimate annual solar yield",
+        "description": "Returns an indicative annual generation estimate for an array from location and array specs.",
+        "tags": [
+          "climate/energy"
+        ],
+        "operationId": "solar-yield-get-solar-yield",
+        "parameters": [
+          {
+            "name": "postcode",
+            "in": "query",
+            "required": true,
+            "description": "Installation postcode.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "kwp",
+            "in": "query",
+            "required": true,
+            "description": "Array capacity in kW peak.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "tilt",
+            "in": "query",
+            "required": false,
+            "description": "Panel tilt in degrees.",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Yield estimated.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "kwhPerYear": 3800,
+                  "confidence": "medium",
+                  "bestMonth": "June"
+                },
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No irradiance data for location."
+          }
+        }
+      }
+    }
+  }
+}

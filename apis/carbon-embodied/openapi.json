@@ -1,0 +1,56 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Embodied Carbon Lookup",
+    "description": "Supplies indicative embodied carbon figures for construction materials for early-stage comparison.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://example.invalid"
+    }
+  ],
+  "paths": {
+    "/materials/{id}": {
+      "get": {
+        "summary": "Look up embodied carbon",
+        "description": "Returns an indicative embodied carbon figure for a construction material.",
+        "tags": [
+          "climate/energy"
+        ],
+        "operationId": "carbon-embodied-get-materials-id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Material identifier.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Value returned.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "kgCO2ePerKg": 1.1,
+                  "unit": "kg",
+                  "source": "reference dataset 2024"
+                },
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Material unknown."
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Secrets Rotation Planner",
+    "description": "Maps credentials to their consumers and proposes an ordered rotation plan without acting on secrets.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://example.invalid"
+    }
+  ],
+  "paths": {
+    "/secrets/{name}/consumers": {
+      "get": {
+        "summary": "List consumers of a secret",
+        "description": "Returns every registered consumer that references the named secret, with the path it uses.",
+        "tags": [
+          "developer operations"
+        ],
+        "operationId": "secrets-rotation-get-secrets-name-consumers",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "description": "Secret name.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Consumers listed.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "consumers": [
+                    {
+                      "service": "api-gateway",
+                      "path": "env/DB_PASS"
+                    }
+                  ],
+                  "lastRotatedAt": "2026-08-01T00:00:00Z"
+                },
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Secret unknown."
+          }
+        }
+      }
+    },
+    "/secrets/{name}/rotate": {
+      "post": {
+        "summary": "Propose a rotation plan",
+        "description": "Returns an ordered rotation plan across consumers, without performing the rotation.",
+        "tags": [
+          "developer operations"
+        ],
+        "operationId": "secrets-rotation-post-secrets-name-rotate",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "description": "Secret name.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Plan proposed.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "order": [
+                    {
+                      "service": "api-gateway",
+                      "step": 1
+                    },
+                    {
+                      "service": "worker",
+                      "step": 2
+                    }
+                  ],
+                  "warnings": [
+                    "api-gateway pins a rolling version"
+                  ]
+                },
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Secret unknown."
+          }
+        }
+      }
+    }
+  }
+}

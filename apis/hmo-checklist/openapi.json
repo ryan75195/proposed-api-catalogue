@@ -1,0 +1,60 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "HMO Compliance Checklist",
+    "description": "Produces a licensing requirements checklist for an HMO property based on its local council rules.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://example.invalid"
+    }
+  ],
+  "paths": {
+    "/checklists": {
+      "get": {
+        "summary": "Generate a compliance checklist",
+        "description": "Returns a list of licensing requirements that may apply to a property in its area.",
+        "tags": [
+          "property"
+        ],
+        "operationId": "hmo-checklist-get-checklists",
+        "parameters": [
+          {
+            "name": "postcode",
+            "in": "query",
+            "required": true,
+            "description": "Property postcode.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Checklist generated.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "items": [
+                    {
+                      "requirement": "smoke-alarm-test",
+                      "status": "required"
+                    }
+                  ],
+                  "council": "Bristol"
+                },
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Council rules unknown for postcode."
+          }
+        }
+      }
+    }
+  }
+}

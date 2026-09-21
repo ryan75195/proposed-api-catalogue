@@ -1,0 +1,69 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Load Builder",
+    "description": "Packs parcels into a vehicle within weight and volume limits and reports utilisation.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://example.invalid"
+    }
+  ],
+  "paths": {
+    "/loads/build": {
+      "post": {
+        "summary": "Pack parcels into a vehicle",
+        "description": "Returns whether a set of parcels fits a vehicle and the utilisation achieved.",
+        "tags": [
+          "logistics"
+        ],
+        "operationId": "load-builder-post-loads-build",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Load built.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "packed": true,
+                  "usedKg": 380,
+                  "usedM3": 2.1,
+                  "unplaced": []
+                },
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Cannot fit all parcels."
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "parcels",
+                  "vehicle"
+                ],
+                "properties": {
+                  "parcels": {
+                    "type": "array"
+                  },
+                  "vehicle": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

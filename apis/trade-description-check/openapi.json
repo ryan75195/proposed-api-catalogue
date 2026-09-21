@@ -1,0 +1,67 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Trade Description Check",
+    "description": "Compares a business's claimed activity against registered codes to flag discrepancies.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://example.invalid"
+    }
+  ],
+  "paths": {
+    "/check": {
+      "get": {
+        "summary": "Check a claimed activity",
+        "description": "Compares a business's claimed activity against its registered activity codes.",
+        "tags": [
+          "business records"
+        ],
+        "operationId": "trade-description-check-get-check",
+        "parameters": [
+          {
+            "name": "regNo",
+            "in": "query",
+            "required": true,
+            "description": "Company registration number.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "claimed",
+            "in": "query",
+            "required": true,
+            "description": "Claimed activity label.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Check completed.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "claimMatches": true,
+                  "registeredCodes": [
+                    "K"
+                  ],
+                  "note": "verify licence"
+                },
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Company not found."
+          }
+        }
+      }
+    }
+  }
+}

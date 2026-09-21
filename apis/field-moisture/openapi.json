@@ -1,0 +1,56 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Field Moisture Readings",
+    "description": "Aggregates soil moisture sensor readings for a field into a single status and trend.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://example.invalid"
+    }
+  ],
+  "paths": {
+    "/fields/{id}/moisture": {
+      "get": {
+        "summary": "Current field moisture",
+        "description": "Returns aggregated volumetric water content for a field and an indicative status.",
+        "tags": [
+          "food/agriculture"
+        ],
+        "operationId": "field-moisture-get-fields-id-moisture",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Field identifier.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Reading returned.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "vwcPct": 28,
+                  "status": "adequate",
+                  "trend": "falling"
+                },
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Field unknown or no sensors."
+          }
+        }
+      }
+    }
+  }
+}

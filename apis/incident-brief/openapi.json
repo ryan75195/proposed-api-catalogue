@@ -1,0 +1,72 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Incident Brief",
+    "description": "Compresses changes, telemetry and code events into a single incident timeline for on-call engineers.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://example.invalid"
+    }
+  ],
+  "paths": {
+    "/incidents": {
+      "get": {
+        "summary": "Build a brief for a service incident",
+        "description": "Returns a timeline of correlated change and telemetry events for a service over a window.",
+        "tags": [
+          "developer operations"
+        ],
+        "operationId": "incident-brief-get-incidents",
+        "parameters": [
+          {
+            "name": "service",
+            "in": "query",
+            "required": true,
+            "description": "Service or component name.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "since",
+            "in": "query",
+            "required": false,
+            "description": "Window start, e.g. 2h or ISO timestamp.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Brief assembled.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "events": [
+                    {
+                      "at": "2026-09-21T10:02:00Z",
+                      "type": "deploy",
+                      "summary": "cart-service 1.4.2"
+                    }
+                  ],
+                  "suspects": [
+                    "cart-service"
+                  ]
+                },
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No service matched."
+          }
+        }
+      }
+    }
+  }
+}
