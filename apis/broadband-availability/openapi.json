@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/api/v1/broadband-availability",
+      "url": "https://openapiregistry.com/api/v1/broadband-availability",
       "description": "Pre-launch: endpoints are not live yet and answer 503."
     }
   ],
