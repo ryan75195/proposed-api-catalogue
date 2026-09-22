@@ -8,7 +8,7 @@ Would you use one of these? [Request early access](https://github.com/ryan75195/
 
 Machine-readable entry points: [`llms.txt`](https://nice-dune-02fdd5103.3.azurestaticapps.net/llms.txt) · [`sitemap.xml`](https://nice-dune-02fdd5103.3.azurestaticapps.net/sitemap.xml) · per-API `openapi.json`.
 
-How the catalogue is chosen: [selection rationale and evidence](https://github.com/ryan75195/api-market-finder/blob/main/docs/experiments/selection.md) (private repository; summary below).
+How the catalogue is chosen: [selection rationale and evidence](SELECTION.md) — every proposal was scored for query evidence, incumbent gap and coding-task fit, with cited sources.
 
 
 ## Business Records
