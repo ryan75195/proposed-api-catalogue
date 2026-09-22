@@ -3,12 +3,21 @@
   "info": {
     "title": "Income Tax Calculation and Reporting API",
     "description": "Computes tax due and quarterly reporting figures from income, deductions and jurisdiction. Pre-launch design; endpoints are not live yet.",
-    "version": "0.1.0"
+    "version": "0.1.0",
+    "x-planned-pricing": {
+      "model": "free tier for evaluation, paid tiers by volume",
+      "status": "planned; nothing charged before launch"
+    }
   },
   "servers": [
     {
       "url": "https://openapiregistry.com/api/v1/income-tax-calculator",
       "description": "Pre-launch: endpoints are not live yet and answer 503."
+    }
+  ],
+  "security": [
+    {
+      "ApiKeyAuth": []
     }
   ],
   "paths": {
@@ -66,12 +75,12 @@
             "content": {
               "application/json": {
                 "example": {
-                  "tax_due": 8450.00,
+                  "tax_due": 8450.0,
                   "effective_rate": 0.1127,
                   "quarterly": [
                     {
                       "period": "Q1",
-                      "payment": 2112.50
+                      "payment": 2112.5
                     }
                   ]
                 },
@@ -88,6 +97,16 @@
             "description": "Pre-launch: endpoints are not live yet."
           }
         }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-API-Key",
+        "description": "Planned for launch: an API key issued on request. Free tier for evaluation, paid tiers by volume; nothing is charged before launch."
       }
     }
   }

@@ -3,12 +3,21 @@
   "info": {
     "title": "GTIN Barcode Validation and Lookup API",
     "description": "Validates GTIN/UPC/EAN barcodes and resolves the GS1 prefix and product metadata when available. Pre-launch design; endpoints are not live yet.",
-    "version": "0.1.0"
+    "version": "0.1.0",
+    "x-planned-pricing": {
+      "model": "free tier for evaluation, paid tiers by volume",
+      "status": "planned; nothing charged before launch"
+    }
   },
   "servers": [
     {
       "url": "https://openapiregistry.com/api/v1/gtin-barcode-check",
       "description": "Pre-launch: endpoints are not live yet and answer 503."
+    }
+  ],
+  "security": [
+    {
+      "ApiKeyAuth": []
     }
   ],
   "paths": {
@@ -57,6 +66,16 @@
             "description": "Pre-launch: endpoints are not live yet."
           }
         }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-API-Key",
+        "description": "Planned for launch: an API key issued on request. Free tier for evaluation, paid tiers by volume; nothing is charged before launch."
       }
     }
   }

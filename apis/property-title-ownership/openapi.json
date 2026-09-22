@@ -3,12 +3,21 @@
   "info": {
     "title": "Property Title and Ownership Lookup API",
     "description": "Returns title register ownership and tenure information for a property where available. Pre-launch design; endpoints are not live yet.",
-    "version": "0.1.0"
+    "version": "0.1.0",
+    "x-planned-pricing": {
+      "model": "free tier for evaluation, paid tiers by volume",
+      "status": "planned; nothing charged before launch"
+    }
   },
   "servers": [
     {
       "url": "https://openapiregistry.com/api/v1/property-title-ownership",
       "description": "Pre-launch: endpoints are not live yet and answer 503."
+    }
+  ],
+  "security": [
+    {
+      "ApiKeyAuth": []
     }
   ],
   "paths": {
@@ -65,6 +74,16 @@
             "description": "No registered title found for the given location."
           }
         }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-API-Key",
+        "description": "Planned for launch: an API key issued on request. Free tier for evaluation, paid tiers by volume; nothing is charged before launch."
       }
     }
   }

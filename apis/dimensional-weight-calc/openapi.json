@@ -3,12 +3,21 @@
   "info": {
     "title": "Dimensional Weight DIM Shipping Calculator API",
     "description": "Computes dimensional (volumetric) and billable weight for a parcel using carrier-specific DIM rules. Pre-launch design; endpoints are not live yet.",
-    "version": "0.1.0"
+    "version": "0.1.0",
+    "x-planned-pricing": {
+      "model": "free tier for evaluation, paid tiers by volume",
+      "status": "planned; nothing charged before launch"
+    }
   },
   "servers": [
     {
       "url": "https://openapiregistry.com/api/v1/dimensional-weight-calc",
       "description": "Pre-launch: endpoints are not live yet and answer 503."
+    }
+  ],
+  "security": [
+    {
+      "ApiKeyAuth": []
     }
   ],
   "paths": {
@@ -103,6 +112,16 @@
             "description": "Invalid dimensions, weight or carrier supplied."
           }
         }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-API-Key",
+        "description": "Planned for launch: an API key issued on request. Free tier for evaluation, paid tiers by volume; nothing is charged before launch."
       }
     }
   }

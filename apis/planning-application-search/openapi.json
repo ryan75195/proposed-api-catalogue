@@ -3,12 +3,21 @@
   "info": {
     "title": "Planning Application Search by Postcode API",
     "description": "Returns local planning applications near a postcode, with status, description and decision dates. Pre-launch design; endpoints are not live yet.",
-    "version": "0.1.0"
+    "version": "0.1.0",
+    "x-planned-pricing": {
+      "model": "free tier for evaluation, paid tiers by volume",
+      "status": "planned; nothing charged before launch"
+    }
   },
   "servers": [
     {
       "url": "https://openapiregistry.com/api/v1/planning-application-search",
       "description": "Pre-launch: endpoints are not live yet and answer 503."
+    }
+  ],
+  "security": [
+    {
+      "ApiKeyAuth": []
     }
   ],
   "paths": {
@@ -57,6 +66,16 @@
             "description": "No planning applications found for postcode."
           }
         }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-API-Key",
+        "description": "Planned for launch: an API key issued on request. Free tier for evaluation, paid tiers by volume; nothing is charged before launch."
       }
     }
   }

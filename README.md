@@ -1,10 +1,10 @@
-# Pre-launch API Catalogue
+# OpenAPI Registry
 
-45 API products published as full specifications ahead of release. Endpoints are not live yet: every spec points at a real base URL on the catalogue host that answers `503 not_yet_available` and records the attempt, and each product goes live by demand.
+45 API products, each with a full OpenAPI 3.1 specification, an HTML page, a markdown mirror and an llms.txt. Each entry states its own status and how to request access.
 
 Live catalogue: **https://openapiregistry.com/** — each API has an HTML page, a markdown mirror, an `llms.txt` and a downloadable OpenAPI 3.1 spec.
 
-Would you use one of these? [Request early access](https://github.com/ryan75195/proposed-api-catalogue/issues/new?template=request-access.yml) — a GitHub issue, no email needed.
+To request access to any API: [open a request-access issue](https://github.com/ryan75195/proposed-api-catalogue/issues/new?template=request-access.yml) — no email needed.
 
 Machine-readable entry points: [`llms.txt`](https://openapiregistry.com/llms.txt) · [`sitemap.xml`](https://openapiregistry.com/sitemap.xml) · per-API `openapi.json`.
 
