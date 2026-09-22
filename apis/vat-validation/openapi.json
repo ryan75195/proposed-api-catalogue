@@ -1,0 +1,68 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "EU VAT Number Validation API",
+    "description": "Validates EU VAT numbers against registered records and returns the registered name and address. Pre-launch design; endpoints are not live yet.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/api/v1/vat-validation",
+      "description": "Pre-launch: endpoints are not live yet and answer 503."
+    }
+  ],
+  "paths": {
+    "/validate": {
+      "get": {
+        "summary": "Validate an EU VAT number",
+        "description": "Checks a country code and VAT number against EU records and returns validity plus registered name and address when available.",
+        "tags": [
+          "finance/compliance"
+        ],
+        "operationId": "vat-validation-get-validate",
+        "parameters": [
+          {
+            "name": "country_code",
+            "in": "query",
+            "required": true,
+            "description": "Two-letter ISO country code of the VAT number.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "vat_number",
+            "in": "query",
+            "required": true,
+            "description": "The VAT number to validate, including the country prefix.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Validation result returned.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "valid": true,
+                  "country_code": "DE",
+                  "vat_number": "DE123456789",
+                  "name": "Example GmbH",
+                  "address": "Berlin, DE"
+                },
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Pre-launch: endpoints are not live yet."
+          }
+        }
+      }
+    }
+  }
+}

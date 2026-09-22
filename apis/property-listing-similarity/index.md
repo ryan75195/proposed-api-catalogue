@@ -1,12 +1,12 @@
-# Listing Similarity
+# Similar Property Listings Matching API
 
-Buyers see one listing at a time and cannot tell if the asking price is in line with similar homes, because descriptions vary wildly in how they describe the same things.
+Which nearby listings are comparable to this property, and how similar are they? Buyers see one listing at a time and cannot tell if the asking price is in line with similar homes, because descriptions vary wildly in how they describe the same things.
 
-Listing Similarity matches a listing against comparable ones using structured features rather than headline text. A call to POST /listings/{id}/similar returns { "similar": [{ "id": "L8821", "score": 0.91 }], "basis": ["type", "sqm", "area"] }.
+Similar Property Listings Matching API matches a listing against comparable ones using structured features rather than headline text. A call to POST /listings/{id}/similar returns { "similar": [{ "id": "L8821", "score": 0.91 }], "basis": ["type", "sqm", "area"] }.
 
 Limits: similarity is computed on features provided and is not an appraisal. It cannot infer features that are missing from a listing.
 
-This is a proposed design and is not implemented.
+Status: pre-launch. The endpoints described here are not yet live; request early access from the link on this page.
 
 The basis array states which features contributed to matching so the caller can weigh how meaningful a high score is. Listings missing key features are not silently penalised.
 

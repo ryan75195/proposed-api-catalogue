@@ -1,12 +1,12 @@
-# Embodied Carbon Lookup
+# Construction Material Embodied Carbon API
 
-Buildings are chosen on operational energy, but embodied carbon in materials is often a large share of lifetime impact and is rarely compared.
+I need the embodied carbon of a construction material in kg CO2e to compare building options. Buildings are chosen on operational energy, but embodied carbon in materials is often a large share of lifetime impact and is rarely compared.
 
-Embodied Carbon Lookup returns an embodied carbon figure for a construction material. A call to GET /materials/{id} returns { "kgCO2ePerKg": 1.1, "unit": "kg", "source": "reference dataset 2024" }.
+Construction Material Embodied Carbon API returns an embodied carbon figure for a construction material. A call to GET /materials/{id} returns { "kgCO2ePerKg": 1.1, "unit": "kg", "source": "reference dataset 2024" }.
 
 Limits: figures come from generic reference datasets and vary by supplier, transport and process. Results are indicative and not a certified assessment.
 
-This is a proposed design and is not implemented.
+Status: pre-launch. The endpoints described here are not yet live; request early access from the link on this page.
 
 The source field names the reference dataset a figure came from so different datasets can be compared transparently. No single figure can stand in for a project-specific assessment.
 

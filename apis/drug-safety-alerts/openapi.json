@@ -1,0 +1,70 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Drug Safety Alerts and Recalls API",
+    "description": "Returns drug safety alerts and recalls matching a medicine name or therapeutic area. Pre-launch design; endpoints are not live yet.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/api/v1/drug-safety-alerts",
+      "description": "Pre-launch: endpoints are not live yet and answer 503."
+    }
+  ],
+  "paths": {
+    "/alerts": {
+      "get": {
+        "summary": "List drug safety alerts and recalls",
+        "description": "Returns matching safety alerts, recalls and advisories for a medicine name or therapeutic area.",
+        "tags": [
+          "health/safety"
+        ],
+        "operationId": "drug-safety-alerts-get-alerts",
+        "parameters": [
+          {
+            "name": "medicine",
+            "in": "query",
+            "required": false,
+            "description": "Medicine name to match against alerts.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "therapeutic_area",
+            "in": "query",
+            "required": false,
+            "description": "Therapeutic area to filter alerts by.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Matching alerts returned.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "alerts": [
+                    {
+                      "medicine": "duloxetine",
+                      "type": "recall",
+                      "published": "2025-06-02"
+                    }
+                  ]
+                },
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Missing or invalid query parameters."
+          }
+        }
+      }
+    }
+  }
+}

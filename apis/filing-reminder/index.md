@@ -1,12 +1,12 @@
-# Filing Deadline Reminder
+# UK Company Filing Deadline Dates API
 
-Companies miss statutory filing deadlines because reminders sit in inboxes that go unread. A single view of upcoming deadlines per company would reduce late filings.
+When is this UK company's next accounts and confirmation statement deadline? Companies miss statutory filing deadlines because reminders sit in inboxes that go unread, and a single view of upcoming deadlines per company would reduce late filings.
 
-Filing Deadline Reminder returns the upcoming statutory filing deadlines for a company. A call to GET /companies/{regNo}/deadlines returns { "next": { "type": "accounts", "due": "2026-11-30" }, "late": [] }.
+UK Company Filing Deadline Dates API returns the upcoming statutory filing deadlines for a company. A call to GET /companies/{regNo}/deadlines returns { "next": { "type": "accounts", "due": "2026-11-30" }, "late": [] }.
 
 Limits: it lists deadlines derived from the register schedule and is not an official reminder; it does not file documents or stop penalties.
 
-This is a proposed design and is not implemented.
+Status: pre-launch. The endpoints described here are not yet live; request early access from the link on this page.
 
 Deadlines are derived from the statutory schedule for the company's accounting reference date and are not personalised reminders. The service does not send messages or file anything.
 

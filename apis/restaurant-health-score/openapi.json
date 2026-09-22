@@ -1,0 +1,70 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Restaurant Health Inspection Scores by Zip API",
+    "description": "Returns restaurant health inspection grades, violations and history for a restaurant name or zip code. Pre-launch design; endpoints are not live yet.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/api/v1/restaurant-health-score",
+      "description": "Pre-launch: endpoints are not live yet and answer 503."
+    }
+  ],
+  "paths": {
+    "/inspections": {
+      "get": {
+        "summary": "Look up restaurant health inspections",
+        "description": "Returns inspection grades, violations and history for a restaurant name or zip code.",
+        "tags": [
+          "health/safety"
+        ],
+        "operationId": "restaurant-health-score-get-inspections",
+        "parameters": [
+          {
+            "name": "zip",
+            "in": "query",
+            "required": false,
+            "description": "Zip code to search for restaurants in.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "required": false,
+            "description": "Restaurant name to look up.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Matching inspections returned.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "restaurants": [
+                    {
+                      "name": "Example Diner",
+                      "grade": "A",
+                      "violations": 2
+                    }
+                  ]
+                },
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No inspections found for the query."
+          }
+        }
+      }
+    }
+  }
+}

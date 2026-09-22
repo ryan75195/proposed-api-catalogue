@@ -1,0 +1,89 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "UK Sort Code and Account Validation API",
+    "description": "Validates a UK sort code and account number and returns the linked bank and branch details. Pre-launch design; endpoints are not live yet.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/api/v1/uk-sort-code-check",
+      "description": "Pre-launch: endpoints are not live yet and answer 503."
+    }
+  ],
+  "paths": {
+    "/validate": {
+      "get": {
+        "summary": "Validate a UK sort code and account number",
+        "description": "Checks a 6-digit sort code and 8-digit account number and returns validity and linked bank details.",
+        "tags": [
+          "finance"
+        ],
+        "operationId": "uk-sort-code-check-validate",
+        "parameters": [
+          {
+            "name": "sort_code",
+            "in": "query",
+            "required": true,
+            "description": "6-digit UK sort code.",
+            "schema": {
+              "type": "string",
+              "minLength": 6,
+              "maxLength": 6
+            }
+          },
+          {
+            "name": "account_number",
+            "in": "query",
+            "required": true,
+            "description": "8-digit UK bank account number.",
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 8
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Validation result.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "valid": true,
+                  "sortCode": "200000",
+                  "bank": "Barclays",
+                  "branch": "Head Office",
+                  "message": "Sort code and account number are valid."
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "valid": {
+                      "type": "boolean"
+                    },
+                    "sortCode": {
+                      "type": "string"
+                    },
+                    "bank": {
+                      "type": "string"
+                    },
+                    "branch": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Sort code or account number is malformed."
+          }
+        }
+      }
+    }
+  }
+}

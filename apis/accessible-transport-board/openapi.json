@@ -1,13 +1,14 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "Accessible Transport Boarding",
-    "description": "Reports boarding accessibility of next departures at a stop from operator-supplied data.",
+    "title": "Accessible Transit Boarding Info API",
+    "description": "Reports boarding accessibility of next departures at a stop from operator-supplied data. Pre-launch design; endpoints are not live yet.",
     "version": "0.1.0"
   },
   "servers": [
     {
-      "url": "https://example.invalid"
+      "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/api/v1/accessible-transport-board",
+      "description": "Pre-launch: endpoints are not live yet and answer 503."
     }
   ],
   "paths": {

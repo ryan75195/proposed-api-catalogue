@@ -1,0 +1,82 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "India GST Number GSTIN Validation API",
+    "description": "Validates an Indian 15-character GSTIN and returns taxpayer name and registration details. Pre-launch design; endpoints are not live yet.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/api/v1/gstin-validation",
+      "description": "Pre-launch: endpoints are not live yet and answer 503."
+    }
+  ],
+  "paths": {
+    "/validate": {
+      "get": {
+        "summary": "Validate an Indian GSTIN",
+        "description": "Checks a 15-character GSTIN and returns validity, taxpayer name and registration details.",
+        "tags": [
+          "finance"
+        ],
+        "operationId": "gstin-validation-validate",
+        "parameters": [
+          {
+            "name": "gstin",
+            "in": "query",
+            "required": true,
+            "description": "15-character Indian Goods and Services Tax Identification Number.",
+            "schema": {
+              "type": "string",
+              "minLength": 15,
+              "maxLength": 15
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Validation result.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "valid": true,
+                  "gstin": "27AAPFU4258B1ZV",
+                  "legalName": "Example Traders Pvt Ltd",
+                  "stateCode": "27",
+                  "status": "ACTIVE",
+                  "registrationDate": "2021-04-01"
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "valid": {
+                      "type": "boolean"
+                    },
+                    "gstin": {
+                      "type": "string"
+                    },
+                    "legalName": {
+                      "type": "string"
+                    },
+                    "stateCode": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string"
+                    },
+                    "registrationDate": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "GSTIN is malformed."
+          }
+        }
+      }
+    }
+  }
+}

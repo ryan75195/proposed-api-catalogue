@@ -1,0 +1,85 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "EPC Rating Lookup by Postcode API",
+    "description": "Returns the registered Energy Performance Certificate for a single address, looked up by postcode or certificate number. Pre-launch design; endpoints are not live yet.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/api/v1/epc-rating-lookup",
+      "description": "Pre-launch: endpoints are not live yet and answer 503."
+    }
+  ],
+  "paths": {
+    "/ratings": {
+      "get": {
+        "summary": "Look up an EPC rating",
+        "description": "Returns the registered energy certificate for a property matched by postcode or certificate number.",
+        "tags": [
+          "climate/energy"
+        ],
+        "operationId": "epc-rating-lookup-get-ratings",
+        "parameters": [
+          {
+            "name": "postcode",
+            "in": "query",
+            "required": false,
+            "description": "Property postcode used to find the registered certificate.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "certificateNumber",
+            "in": "query",
+            "required": false,
+            "description": "The EPC certificate number used to look up a specific record.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Certificate details returned.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "rating": "C",
+                  "score": 68,
+                  "certificateNumber": "1234-5678-9012-3456-7890",
+                  "address": "1 High Street, Bristol"
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "rating": {
+                      "type": "string",
+                      "description": "The energy rating band (A to G)."
+                    },
+                    "score": {
+                      "type": "number",
+                      "description": "The energy efficiency score."
+                    },
+                    "certificateNumber": {
+                      "type": "string",
+                      "description": "The registered certificate number."
+                    },
+                    "address": {
+                      "type": "string",
+                      "description": "The address the certificate is registered to."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No certificate found for the supplied postcode or certificate number."
+          }
+        }
+      }
+    }
+  }
+}

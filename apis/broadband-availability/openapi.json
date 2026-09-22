@@ -1,0 +1,63 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Broadband Availability at Postcode API",
+    "description": "Returns fixed broadband availability, fibre-to-the-premises coverage and advertised speeds for a UK postcode. Pre-launch design; endpoints are not live yet.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/api/v1/broadband-availability",
+      "description": "Pre-launch: endpoints are not live yet and answer 503."
+    }
+  ],
+  "paths": {
+    "/availability": {
+      "get": {
+        "summary": "Check broadband availability",
+        "description": "Returns fixed broadband availability and advertised speeds for a postcode.",
+        "tags": [
+          "other"
+        ],
+        "operationId": "broadband-availability-get-availability",
+        "parameters": [
+          {
+            "name": "postcode",
+            "in": "query",
+            "required": true,
+            "description": "UK postcode to check.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Availability data returned.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "postcode": "BS1 5TR",
+                  "fibre_fttp": true,
+                  "max_speed_mbps": 1000,
+                  "suppliers": [
+                    "Openreach"
+                  ]
+                },
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid postcode supplied."
+          },
+          "404": {
+            "description": "No availability data for postcode."
+          }
+        }
+      }
+    }
+  }
+}

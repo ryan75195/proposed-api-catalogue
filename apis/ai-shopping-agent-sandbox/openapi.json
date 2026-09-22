@@ -1,0 +1,132 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Test Merchant API for AI Shopping Agents API",
+    "description": "A mock storefront for developing and testing AI shopping agents against a realistic product catalog and purchase flow. Pre-launch design; endpoints are not live yet.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/api/v1/ai-shopping-agent-sandbox",
+      "description": "Pre-launch: endpoints are not live yet and answer 503."
+    }
+  ],
+  "paths": {
+    "/catalog": {
+      "get": {
+        "summary": "List the mock product catalog",
+        "description": "Returns synthetic product data that an AI shopping agent can browse and select from.",
+        "tags": [
+          "ecommerce"
+        ],
+        "operationId": "ai-shopping-agent-sandbox-get-catalog",
+        "parameters": [
+          {
+            "name": "category",
+            "in": "query",
+            "required": false,
+            "description": "Optional filter to return products in a given category.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Product catalog returned.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "products": [
+                    {
+                      "product_id": "p-1001",
+                      "name": "Ergonomic Chair",
+                      "category": "furniture",
+                      "unit_price": 129.0
+                    }
+                  ]
+                },
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Pre-launch: endpoints are not live yet."
+          }
+        }
+      }
+    },
+    "/carts": {
+      "post": {
+        "summary": "Perform a cart action",
+        "description": "Adds, updates or removes items in a mock cart and returns the running total.",
+        "tags": [
+          "ecommerce"
+        ],
+        "operationId": "ai-shopping-agent-sandbox-post-carts",
+        "requestBody": {
+          "required": true,
+          "description": "The cart action and product to act on.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "action": {
+                    "type": "string",
+                    "description": "The operation to perform, for example add, update or remove."
+                  },
+                  "product_id": {
+                    "type": "string",
+                    "description": "The id of the product to act on."
+                  },
+                  "quantity": {
+                    "type": "integer",
+                    "description": "The quantity of the product for the action."
+                  }
+                }
+              },
+              "example": {
+                "action": "add",
+                "product_id": "p-1001",
+                "quantity": 2
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Cart updated.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "cart_id": "c-42",
+                  "items": [
+                    {
+                      "product_id": "p-1001",
+                      "name": "Ergonomic Chair",
+                      "quantity": 2,
+                      "unit_price": 129.0
+                    }
+                  ],
+                  "total": 258.0
+                },
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Product id not found in the mock catalog."
+          },
+          "503": {
+            "description": "Pre-launch: endpoints are not live yet."
+          }
+        }
+      }
+    }
+  }
+}

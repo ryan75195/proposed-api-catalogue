@@ -1,13 +1,14 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "Supplier Registry Lookup",
-    "description": "Resolves a supplier to its registry record and verified identifiers for onboarding checks.",
+    "title": "UK Supplier Verification API",
+    "description": "Resolves a supplier to its registry record and verified identifiers for onboarding checks. Pre-launch design; endpoints are not live yet.",
     "version": "0.1.0"
   },
   "servers": [
     {
-      "url": "https://example.invalid"
+      "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/api/v1/supplier-registry",
+      "description": "Pre-launch: endpoints are not live yet and answer 503."
     }
   ],
   "paths": {

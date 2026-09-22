@@ -1,0 +1,72 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Property Sale Price Lookup API",
+    "description": "Returns recent sold transactions for a postcode or address, including price, date, property type and tenure. Pre-launch design; endpoints are not live yet.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/api/v1/sale-price-lookup",
+      "description": "Pre-launch: endpoints are not live yet and answer 503."
+    }
+  ],
+  "paths": {
+    "/sales": {
+      "get": {
+        "summary": "Look up sold prices",
+        "description": "Returns matched sold transactions for a postcode or address.",
+        "tags": [
+          "property"
+        ],
+        "operationId": "sale-price-lookup-get-sales",
+        "parameters": [
+          {
+            "name": "postcode",
+            "in": "query",
+            "required": false,
+            "description": "Postcode to search for sales.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "required": false,
+            "description": "Address or street to search for sales.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sold transactions returned.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "sales": [
+                    {
+                      "address": "1 High Street",
+                      "price": 285000,
+                      "date": "2024-03-15",
+                      "type": "terraced",
+                      "tenure": "freehold"
+                    }
+                  ]
+                },
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No sales found for the given location."
+          }
+        }
+      }
+    }
+  }
+}

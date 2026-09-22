@@ -1,0 +1,94 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Income Tax Calculation and Reporting API",
+    "description": "Computes tax due and quarterly reporting figures from income, deductions and jurisdiction. Pre-launch design; endpoints are not live yet.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/api/v1/income-tax-calculator",
+      "description": "Pre-launch: endpoints are not live yet and answer 503."
+    }
+  ],
+  "paths": {
+    "/calculations": {
+      "post": {
+        "summary": "Calculate tax due",
+        "description": "Returns computed tax due and quarterly reporting figures for an individual or business based on the supplied income, deductions and jurisdiction.",
+        "tags": [
+          "finance/compliance"
+        ],
+        "operationId": "income-tax-calculator-post-calculations",
+        "requestBody": {
+          "required": true,
+          "description": "The income and jurisdiction details to calculate tax on.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "jurisdiction": {
+                    "type": "string",
+                    "description": "The tax jurisdiction and filing regime, for example US-FEDERAL."
+                  },
+                  "filing_status": {
+                    "type": "string",
+                    "description": "Filing status for an individual, for example single or married-filing-jointly."
+                  },
+                  "gross_income": {
+                    "type": "number",
+                    "description": "Gross income in the reporting currency."
+                  },
+                  "deductions": {
+                    "type": "number",
+                    "description": "Claimed deductions to subtract before tax is computed."
+                  },
+                  "tax_year": {
+                    "type": "integer",
+                    "description": "The tax year the calculation applies to."
+                  }
+                }
+              },
+              "example": {
+                "jurisdiction": "US-FEDERAL",
+                "filing_status": "single",
+                "gross_income": 75000,
+                "deductions": 13500,
+                "tax_year": 2026
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Tax calculation returned.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "tax_due": 8450.00,
+                  "effective_rate": 0.1127,
+                  "quarterly": [
+                    {
+                      "period": "Q1",
+                      "payment": 2112.50
+                    }
+                  ]
+                },
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Missing or invalid income, deductions or jurisdiction."
+          },
+          "503": {
+            "description": "Pre-launch: endpoints are not live yet."
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,13 +1,14 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "Rental Valuation Estimate",
-    "description": "Estimates a monthly rent range for a property from its features and nearby comparables.",
+    "title": "Rental Price Estimate for a Property API",
+    "description": "Estimates a monthly rent range for a property from its features and nearby comparables. Pre-launch design; endpoints are not live yet.",
     "version": "0.1.0"
   },
   "servers": [
     {
-      "url": "https://example.invalid"
+      "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/api/v1/rental-valuation",
+      "description": "Pre-launch: endpoints are not live yet and answer 503."
     }
   ],
   "paths": {

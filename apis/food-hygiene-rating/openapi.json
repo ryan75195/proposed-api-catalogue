@@ -1,0 +1,90 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Food Hygiene Rating Lookup API",
+    "description": "Returns the food hygiene rating for a premises, looked up by business name or postcode. Pre-launch design; endpoints are not live yet.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/api/v1/food-hygiene-rating",
+      "description": "Pre-launch: endpoints are not live yet and answer 503."
+    }
+  ],
+  "paths": {
+    "/ratings": {
+      "get": {
+        "summary": "Look up a food hygiene rating",
+        "description": "Returns the food hygiene rating for a premises matched by business name or postcode.",
+        "tags": [
+          "health/safety"
+        ],
+        "operationId": "food-hygiene-rating-get-ratings",
+        "parameters": [
+          {
+            "name": "business",
+            "in": "query",
+            "required": false,
+            "description": "Business name used to find the premises.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "postcode",
+            "in": "query",
+            "required": false,
+            "description": "Postcode used to find premises in that area.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Rating details returned.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "business": "The Crown",
+                  "rating": 5,
+                  "score": 5,
+                  "authority": "Bristol City Council",
+                  "address": "1 High Street, Bristol"
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "business": {
+                      "type": "string",
+                      "description": "The business name."
+                    },
+                    "rating": {
+                      "type": "number",
+                      "description": "The hygiene rating band (0 to 5)."
+                    },
+                    "score": {
+                      "type": "number",
+                      "description": "The numeric hygiene score."
+                    },
+                    "authority": {
+                      "type": "string",
+                      "description": "The local authority responsible for the rating."
+                    },
+                    "address": {
+                      "type": "string",
+                      "description": "The premises address."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No rating found for the supplied business name or postcode."
+          }
+        }
+      }
+    }
+  }
+}

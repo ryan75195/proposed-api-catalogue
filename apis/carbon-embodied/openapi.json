@@ -1,13 +1,14 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "Embodied Carbon Lookup",
-    "description": "Supplies indicative embodied carbon figures for construction materials for early-stage comparison.",
+    "title": "Construction Material Embodied Carbon API",
+    "description": "Supplies indicative embodied carbon figures for construction materials for early-stage comparison. Pre-launch design; endpoints are not live yet.",
     "version": "0.1.0"
   },
   "servers": [
     {
-      "url": "https://example.invalid"
+      "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/api/v1/carbon-embodied",
+      "description": "Pre-launch: endpoints are not live yet and answer 503."
     }
   ],
   "paths": {

@@ -1,13 +1,14 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "Filing Deadline Reminder",
-    "description": "Returns upcoming statutory filing deadlines for a company to help avoid late submissions.",
+    "title": "UK Company Filing Deadline Dates API",
+    "description": "Returns upcoming statutory filing deadlines for a company to help avoid late submissions. Pre-launch design; endpoints are not live yet.",
     "version": "0.1.0"
   },
   "servers": [
     {
-      "url": "https://example.invalid"
+      "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/api/v1/filing-reminder",
+      "description": "Pre-launch: endpoints are not live yet and answer 503."
     }
   ],
   "paths": {

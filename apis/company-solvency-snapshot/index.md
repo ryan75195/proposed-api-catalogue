@@ -1,12 +1,12 @@
-# Company Solvency Snapshot
+# UK Company Solvency Check API
 
-Trade credit decisions need a fast read of whether a company is solvent, but full accounts are dense and time-consuming to digest.
+Is this UK company solvent? Show me its net assets and current ratio from its latest accounts. Trade credit decisions need a fast read of whether a company is solvent, but full accounts are dense and time-consuming to digest.
 
-Company Solvency Snapshot returns a compact solvency view from a company's latest filed accounts. A call to GET /companies/{regNo}/solvency returns { "netAssets": 120000, "currentRatio": 1.6, "status": "solvent" }.
+UK Company Solvency Check API returns a compact solvency view from a company's latest filed accounts. A call to GET /companies/{regNo}/solvency returns { "netAssets": 120000, "currentRatio": 1.6, "status": "solvent" }.
 
 Limits: it summarises filed data and is not a credit rating or advice. Figures are as filed and may lag the true financial position.
 
-This is a proposed design and is not implemented.
+Status: pre-launch. The endpoints described here are not yet live; request early access from the link on this page.
 
 Current ratio and net assets come from the most recent filed accounts, which can be months or a year old. The status label is a mechanical reading of those numbers, not a judgement of risk.
 

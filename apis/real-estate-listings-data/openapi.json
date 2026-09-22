@@ -1,0 +1,107 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Accurate Real Estate Listings Data API",
+    "description": "Returns current real estate listings for a location, filtered by price and status and verified as current. Pre-launch design; endpoints are not live yet.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/api/v1/real-estate-listings-data",
+      "description": "Pre-launch: endpoints are not live yet and answer 503."
+    }
+  ],
+  "paths": {
+    "/listings": {
+      "get": {
+        "summary": "Look up real estate listings",
+        "description": "Returns current real estate listings for a location, filtered by the supplied criteria.",
+        "tags": [
+          "property"
+        ],
+        "operationId": "real-estate-listings-data-get-listings",
+        "parameters": [
+          {
+            "name": "location",
+            "in": "query",
+            "required": true,
+            "description": "Location used to find listings.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "description": "Listing status filter, for example active or pending.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "maxPrice",
+            "in": "query",
+            "required": false,
+            "description": "Maximum listing price filter.",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Listing details returned.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "listings": [
+                    {
+                      "address": "12 Elm Street",
+                      "price": 450000,
+                      "status": "active",
+                      "daysOnMarket": 14
+                    }
+                  ]
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "listings": {
+                      "type": "array",
+                      "description": "The current listings for the location.",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "address": {
+                            "type": "string",
+                            "description": "The listing address."
+                          },
+                          "price": {
+                            "type": "number",
+                            "description": "The asking price."
+                          },
+                          "status": {
+                            "type": "string",
+                            "description": "The listing status."
+                          },
+                          "daysOnMarket": {
+                            "type": "number",
+                            "description": "The number of days the listing has been active."
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No listings found for the supplied location and filters."
+          }
+        }
+      }
+    }
+  }
+}

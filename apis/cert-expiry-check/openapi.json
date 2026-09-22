@@ -1,0 +1,62 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "SSL Certificate Expiry Check API",
+    "description": "Inspects a hostname's TLS certificate and returns its issuer, subject, expiry date and days remaining. Pre-launch design; endpoints are not live yet.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/api/v1/cert-expiry-check",
+      "description": "Pre-launch: endpoints are not live yet and answer 503."
+    }
+  ],
+  "paths": {
+    "/certificates": {
+      "get": {
+        "summary": "Look up a certificate",
+        "description": "Returns the TLS certificate served for a hostname, including its issuer, subject, expiry date and days remaining.",
+        "tags": [
+          "developer operations"
+        ],
+        "operationId": "cert-expiry-check-get-certificates",
+        "parameters": [
+          {
+            "name": "hostname",
+            "in": "query",
+            "required": true,
+            "description": "The hostname to inspect for its TLS certificate.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Certificate details returned.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "hostname": "example.com",
+                  "issuer": "R10,O=Let's Encrypt,C=US",
+                  "subject": "CN=example.com",
+                  "expires_at": "2026-12-01T00:00:00Z",
+                  "days_remaining": 70
+                },
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No certificate found or the hostname did not resolve."
+          },
+          "503": {
+            "description": "Pre-launch: endpoints are not live yet."
+          }
+        }
+      }
+    }
+  }
+}

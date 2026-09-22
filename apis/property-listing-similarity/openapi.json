@@ -1,13 +1,14 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "Listing Similarity",
-    "description": "Matches a property listing to comparable ones on structured features to help assess asking price.",
+    "title": "Similar Property Listings Matching API",
+    "description": "Matches a property listing to comparable ones on structured features to help assess asking price. Pre-launch design; endpoints are not live yet.",
     "version": "0.1.0"
   },
   "servers": [
     {
-      "url": "https://example.invalid"
+      "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/api/v1/property-listing-similarity",
+      "description": "Pre-launch: endpoints are not live yet and answer 503."
     }
   ],
   "paths": {

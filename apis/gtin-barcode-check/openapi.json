@@ -1,0 +1,63 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "GTIN Barcode Validation and Lookup API",
+    "description": "Validates GTIN/UPC/EAN barcodes and resolves the GS1 prefix and product metadata when available. Pre-launch design; endpoints are not live yet.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/api/v1/gtin-barcode-check",
+      "description": "Pre-launch: endpoints are not live yet and answer 503."
+    }
+  ],
+  "paths": {
+    "/lookup": {
+      "get": {
+        "summary": "Validate and look up a barcode",
+        "description": "Validates a GTIN/UPC/EAN barcode and returns check-digit validity, the GS1 prefix and any available product metadata.",
+        "tags": [
+          "ecommerce"
+        ],
+        "operationId": "gtin-barcode-check-get-lookup",
+        "parameters": [
+          {
+            "name": "barcode",
+            "in": "query",
+            "required": true,
+            "description": "The GTIN, UPC or EAN barcode to validate and look up.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Barcode validated and looked up.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "barcode": "4006381333931",
+                  "valid": true,
+                  "check_digit_ok": true,
+                  "gs1_prefix": "400",
+                  "product_name": "Sample Product",
+                  "manufacturer": "Example Corp"
+                },
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Barcode is malformed or has an invalid check digit."
+          },
+          "503": {
+            "description": "Pre-launch: endpoints are not live yet."
+          }
+        }
+      }
+    }
+  }
+}

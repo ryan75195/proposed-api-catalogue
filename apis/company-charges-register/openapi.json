@@ -1,0 +1,98 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Company Charges Register Lookup API",
+    "description": "Returns the registered charges for a company, looked up by company number or name. Pre-launch design; endpoints are not live yet.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/api/v1/company-charges-register",
+      "description": "Pre-launch: endpoints are not live yet and answer 503."
+    }
+  ],
+  "paths": {
+    "/charges": {
+      "get": {
+        "summary": "Look up company charges",
+        "description": "Returns the registered charges for a company matched by company number or name.",
+        "tags": [
+          "business records"
+        ],
+        "operationId": "company-charges-register-get-charges",
+        "parameters": [
+          {
+            "name": "companyNumber",
+            "in": "query",
+            "required": false,
+            "description": "The company number used to find its charges.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "companyName",
+            "in": "query",
+            "required": false,
+            "description": "The company name used to find its charges.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Company charge details returned.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "company": "Example Ltd",
+                  "charges": [
+                    {
+                      "type": "Fixed charge",
+                      "amount": 250000,
+                      "status": "outstanding"
+                    }
+                  ]
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "company": {
+                      "type": "string",
+                      "description": "The company name."
+                    },
+                    "charges": {
+                      "type": "array",
+                      "description": "The registered charges for the company.",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "description": "The type of charge."
+                          },
+                          "amount": {
+                            "type": "number",
+                            "description": "The amount secured by the charge."
+                          },
+                          "status": {
+                            "type": "string",
+                            "description": "The charge status, for example outstanding or satisfied."
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No company or charges found for the supplied company number or name."
+          }
+        }
+      }
+    }
+  }
+}

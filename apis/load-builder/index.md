@@ -1,12 +1,12 @@
-# Load Builder
+# Vehicle Load and Bin Packing API
 
-Filling a vehicle without exceeding weight or volume is done by feel in many small operations, leaving either wasted space or overloaded axles.
+How do I pack parcels into a van without exceeding weight and volume limits? Filling a vehicle is done by feel in many small operations, leaving either wasted space or overloaded axles.
 
-Load Builder packs a set of parcels into a vehicle respecting weight and volume limits. A call to POST /loads/build with { "parcels": [{ "kg": 4, "m3": 0.02 }], "vehicle": "van-small" } returns { "packed": true, "usedKg": 380, "usedM3": 2.1, "unplaced": [] }.
+Vehicle Load and Bin Packing API packs a set of parcels into a vehicle respecting weight and volume limits. A call to POST /loads/build with { "parcels": [{ "kg": 4, "m3": 0.02 }], "vehicle": "van-small" } returns { "packed": true, "usedKg": 380, "usedM3": 2.1, "unplaced": [] }.
 
 Limits: it ignores fragile stacking and irregular shapes; it packs by weight and volume only. It does not dispatch vehicles.
 
-This is a proposed design and is not implemented.
+Status: pre-launch. The endpoints described here are not yet live; request early access from the link on this page.
 
 Unplaced parcels are returned explicitly so a planner can see exactly what does not fit rather than silently dropping items. Utilisation is reported per vehicle for comparison.
 

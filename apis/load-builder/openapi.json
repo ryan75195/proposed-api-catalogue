@@ -1,13 +1,14 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "Load Builder",
-    "description": "Packs parcels into a vehicle within weight and volume limits and reports utilisation.",
+    "title": "Vehicle Load and Bin Packing API",
+    "description": "Packs parcels into a vehicle within weight and volume limits and reports utilisation. Pre-launch design; endpoints are not live yet.",
     "version": "0.1.0"
   },
   "servers": [
     {
-      "url": "https://example.invalid"
+      "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/api/v1/load-builder",
+      "description": "Pre-launch: endpoints are not live yet and answer 503."
     }
   ],
   "paths": {

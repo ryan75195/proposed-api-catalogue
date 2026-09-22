@@ -1,0 +1,63 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Planning Application Search by Postcode API",
+    "description": "Returns local planning applications near a postcode, with status, description and decision dates. Pre-launch design; endpoints are not live yet.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/api/v1/planning-application-search",
+      "description": "Pre-launch: endpoints are not live yet and answer 503."
+    }
+  ],
+  "paths": {
+    "/applications": {
+      "get": {
+        "summary": "Search planning applications",
+        "description": "Returns planning applications near a postcode with their status and decision dates.",
+        "tags": [
+          "property"
+        ],
+        "operationId": "planning-application-search-get-applications",
+        "parameters": [
+          {
+            "name": "postcode",
+            "in": "query",
+            "required": true,
+            "description": "Postcode to search around for planning applications.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Planning applications returned.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "applications": [
+                    {
+                      "reference": "24/01234/FUL",
+                      "description": "Erection of rear extension",
+                      "status": "under-consideration",
+                      "decision_date": null
+                    }
+                  ],
+                  "council": "Bristol"
+                },
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No planning applications found for postcode."
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,12 +1,12 @@
-# Warehouse Slot Booking
+# Warehouse Dock Appointment Booking API
 
-Carriers arrive at warehouses to find docks full, then wait or re-route. Booked arrival slots reduce dock congestion but small sites track them in spreadsheets.
+I need a carrier to book an arrival slot at a warehouse dock before the truck leaves. Carriers arrive to find docks full, then wait or re-route, and small sites track slots in spreadsheets.
 
-Warehouse Slot Booking books an inbound or outbound bay slot and returns a confirmation. A call to POST /slots with { "warehouse": "uk-east", "window": "2026-09-22T14:00:00Z" } returns { "slotId": "s-881", "status": "confirmed", "bay": "B3" }.
+Warehouse Dock Appointment Booking API books an inbound or outbound bay slot and returns a confirmation. A call to POST /slots with { "warehouse": "uk-east", "window": "2026-09-22T14:00:00Z" } returns { "slotId": "s-881", "status": "confirmed", "bay": "B3" }.
 
 Limits: it manages the slot ledger only; it does not manage physical dock traffic or predict wait times. Availability depends on bookings made.
 
-This is a proposed design and is not implemented.
+Status: pre-launch. The endpoints described here are not yet live; request early access from the link on this page.
 
 A bay is assigned at booking time and can be reassigned if a slot is cancelled and rebooked. Overlapping windows for the same bay are rejected as conflicts.
 

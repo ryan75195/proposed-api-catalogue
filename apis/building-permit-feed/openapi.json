@@ -1,0 +1,79 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Building Permit Data by City and Date API",
+    "description": "Returns building permit records for a city and date range with address, type, value and contractor. Pre-launch design; endpoints are not live yet.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/api/v1/building-permit-feed",
+      "description": "Pre-launch: endpoints are not live yet and answer 503."
+    }
+  ],
+  "paths": {
+    "/permits": {
+      "get": {
+        "summary": "List building permits for a city and date range",
+        "description": "Returns building permits with address, permit type, project value and contractor identity.",
+        "tags": [
+          "property"
+        ],
+        "operationId": "building-permit-feed-get-permits",
+        "parameters": [
+          {
+            "name": "city",
+            "in": "query",
+            "required": true,
+            "description": "City to return permits for.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "required": true,
+            "description": "Start date of the range (YYYY-MM-DD).",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "end",
+            "in": "query",
+            "required": true,
+            "description": "End date of the range (YYYY-MM-DD).",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Matching permits returned.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "permits": [
+                    {
+                      "address": "100 Main St",
+                      "type": "residential",
+                      "value": 250000
+                    }
+                  ]
+                },
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Missing or invalid query parameters."
+          }
+        }
+      }
+    }
+  }
+}

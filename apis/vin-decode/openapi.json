@@ -1,0 +1,112 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "VIN Decoder API Return Vehicle Make Model Year API",
+    "description": "Decodes a 17-character VIN into structured vehicle attributes such as make, model, year, body type, engine and dimensions. Pre-launch design; endpoints are not live yet.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/api/v1/vin-decode",
+      "description": "Pre-launch: endpoints are not live yet and answer 503."
+    }
+  ],
+  "paths": {
+    "/vehicles/{vin}": {
+      "get": {
+        "summary": "Decode a VIN",
+        "description": "Returns structured vehicle attributes decoded from a 17-character VIN.",
+        "tags": [
+          "vehicles"
+        ],
+        "operationId": "vin-decode-get-vehicle",
+        "parameters": [
+          {
+            "name": "vin",
+            "in": "path",
+            "required": true,
+            "description": "17-character Vehicle Identification Number.",
+            "schema": {
+              "type": "string",
+              "minLength": 17,
+              "maxLength": 17
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Vehicle attributes decoded.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "vin": "WVWAA11AA0A1B2C3D",
+                  "make": "Volkswagen",
+                  "model": "Golf",
+                  "year": 2018,
+                  "bodyType": "hatchback",
+                  "engine": {
+                    "capacityCc": 2000,
+                    "fuel": "petrol"
+                  },
+                  "dimensions": {
+                    "lengthMm": 4258,
+                    "widthMm": 1727,
+                    "heightMm": 1479
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "vin": {
+                      "type": "string"
+                    },
+                    "make": {
+                      "type": "string"
+                    },
+                    "model": {
+                      "type": "string"
+                    },
+                    "year": {
+                      "type": "integer"
+                    },
+                    "bodyType": {
+                      "type": "string"
+                    },
+                    "engine": {
+                      "type": "object",
+                      "properties": {
+                        "capacityCc": {
+                          "type": "integer"
+                        },
+                        "fuel": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "dimensions": {
+                      "type": "object",
+                      "properties": {
+                        "lengthMm": {
+                          "type": "integer"
+                        },
+                        "widthMm": {
+                          "type": "integer"
+                        },
+                        "heightMm": {
+                          "type": "integer"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No vehicle record found for the VIN."
+          }
+        }
+      }
+    }
+  }
+}

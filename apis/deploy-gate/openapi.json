@@ -1,13 +1,14 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "Deploy Gate",
-    "description": "Recommendation API for staging and blocking software deployments based on configurable rollout policies.",
+    "title": "Deployment Risk Gate API",
+    "description": "Recommendation API for staging and blocking software deployments based on configurable rollout policies. Pre-launch design; endpoints are not live yet.",
     "version": "0.1.0"
   },
   "servers": [
     {
-      "url": "https://example.invalid"
+      "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/api/v1/deploy-gate",
+      "description": "Pre-launch: endpoints are not live yet and answer 503."
     }
   ],
   "paths": {

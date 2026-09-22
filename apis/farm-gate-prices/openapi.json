@@ -1,13 +1,14 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "Farm Gate Prices",
-    "description": "Supplies indicative recent farm gate price aggregates by commodity and region.",
+    "title": "UK Farm Gate Commodity Prices API",
+    "description": "Supplies indicative recent farm gate price aggregates by commodity and region. Pre-launch design; endpoints are not live yet.",
     "version": "0.1.0"
   },
   "servers": [
     {
-      "url": "https://example.invalid"
+      "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/api/v1/farm-gate-prices",
+      "description": "Pre-launch: endpoints are not live yet and answer 503."
     }
   ],
   "paths": {

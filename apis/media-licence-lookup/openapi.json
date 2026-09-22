@@ -1,13 +1,14 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "Media Licence Lookup",
-    "description": "Returns the recorded licence terms for a media asset to support safe reuse decisions.",
+    "title": "Image Clip Licence Terms Lookup API",
+    "description": "Returns the recorded licence terms for a media asset to support safe reuse decisions. Pre-launch design; endpoints are not live yet.",
     "version": "0.1.0"
   },
   "servers": [
     {
-      "url": "https://example.invalid"
+      "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/api/v1/media-licence-lookup",
+      "description": "Pre-launch: endpoints are not live yet and answer 503."
     }
   ],
   "paths": {

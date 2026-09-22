@@ -1,13 +1,14 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "Company Solvency Snapshot",
-    "description": "Returns a compact solvency snapshot for a company from its latest filed accounts.",
+    "title": "UK Company Solvency Check API",
+    "description": "Returns a compact solvency snapshot for a company from its latest filed accounts. Pre-launch design; endpoints are not live yet.",
     "version": "0.1.0"
   },
   "servers": [
     {
-      "url": "https://example.invalid"
+      "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/api/v1/company-solvency-snapshot",
+      "description": "Pre-launch: endpoints are not live yet and answer 503."
     }
   ],
   "paths": {

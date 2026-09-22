@@ -1,0 +1,71 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Property Title and Ownership Lookup API",
+    "description": "Returns title register ownership and tenure information for a property where available. Pre-launch design; endpoints are not live yet.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/api/v1/property-title-ownership",
+      "description": "Pre-launch: endpoints are not live yet and answer 503."
+    }
+  ],
+  "paths": {
+    "/titles": {
+      "get": {
+        "summary": "Look up property title and ownership",
+        "description": "Returns title register ownership and tenure information for an address or postcode where available.",
+        "tags": [
+          "property"
+        ],
+        "operationId": "property-title-ownership-get-titles",
+        "parameters": [
+          {
+            "name": "postcode",
+            "in": "query",
+            "required": false,
+            "description": "Postcode to search for registered titles.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "required": false,
+            "description": "Address to search for a registered title.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Title ownership information returned.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "titles": [
+                    {
+                      "address": "1 High Street",
+                      "owner": "Jane Doe",
+                      "tenure": "freehold",
+                      "title_number": "AV123456"
+                    }
+                  ]
+                },
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No registered title found for the given location."
+          }
+        }
+      }
+    }
+  }
+}

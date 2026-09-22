@@ -1,13 +1,14 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "Lease Renewal Calculator",
-    "description": "Computes the arithmetic of a lease extension, such as years remaining and a proposed new term.",
+    "title": "UK Lease Extension Term Calculator API",
+    "description": "Computes the arithmetic of a lease extension, such as years remaining and a proposed new term. Pre-launch design; endpoints are not live yet.",
     "version": "0.1.0"
   },
   "servers": [
     {
-      "url": "https://example.invalid"
+      "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/api/v1/lease-renewal-calc",
+      "description": "Pre-launch: endpoints are not live yet and answer 503."
     }
   ],
   "paths": {

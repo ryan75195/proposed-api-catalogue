@@ -1,0 +1,75 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Verify Contractor License Status by State API",
+    "description": "Returns contractor license status, class and expiry from state board records. Pre-launch design; endpoints are not live yet.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://nice-dune-02fdd5103.3.azurestaticapps.net/api/v1/contractor-license-check",
+      "description": "Pre-launch: endpoints are not live yet and answer 503."
+    }
+  ],
+  "paths": {
+    "/licenses": {
+      "get": {
+        "summary": "Verify a contractor license",
+        "description": "Returns the active status, license class and expiry for a contractor from state board records.",
+        "tags": [
+          "business records"
+        ],
+        "operationId": "contractor-license-check-get-licenses",
+        "parameters": [
+          {
+            "name": "license_number",
+            "in": "query",
+            "required": false,
+            "description": "Contractor license number to look up.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "required": false,
+            "description": "Contractor name to look up.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "state",
+            "in": "query",
+            "required": true,
+            "description": "Two-letter state code for the licensing board.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "License details returned.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "license": "ABC123",
+                  "status": "active",
+                  "expires": "2027-01-31"
+                },
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "License not found for the state."
+          }
+        }
+      }
+    }
+  }
+}
