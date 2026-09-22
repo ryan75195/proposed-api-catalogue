@@ -1,0 +1,42 @@
+name: Request access to a proposed API
+description: Tell us you would use one of these APIs if it existed. No email required.
+title: "Request access: <api slug>"
+labels: ["request-access"]
+body:
+  - type: input
+    id: api
+    attributes:
+      label: Which proposed API?
+      description: The slug from the catalogue URL, e.g. hmo-checklist
+      placeholder: hmo-checklist
+    validations:
+      required: true
+  - type: textarea
+    id: use
+    attributes:
+      label: What would you use it for?
+      description: One or two sentences about the project or task. This is the most useful thing you can tell us.
+    validations:
+      required: true
+  - type: dropdown
+    id: today
+    attributes:
+      label: How do you solve this today?
+      options:
+        - Manually / spreadsheets
+        - Scraping
+        - An existing API that falls short
+        - Not solved at all
+        - Other
+    validations:
+      required: false
+  - type: dropdown
+    id: agent
+    attributes:
+      label: Did an AI assistant or coding agent lead you here?
+      options:
+        - "Yes"
+        - "No"
+        - Not sure
+    validations:
+      required: false
